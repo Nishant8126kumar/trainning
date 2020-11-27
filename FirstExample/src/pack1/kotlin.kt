@@ -22,6 +22,13 @@ fun main()
     {
         println(iterator.next())
     }
+    var data:Int?=10;
+    fun getDaata()
+    {
+        println("The value of Data=:"+data)
+        data=null
+        println("The update value of=:"+data)
 
+    }
 
 }
