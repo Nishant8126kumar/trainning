@@ -51,6 +51,4 @@ fun main(args:Array<String>)
 
     var p=str2?.length?:-1
     println(p)
-
-
 }
