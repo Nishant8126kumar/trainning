@@ -32,6 +32,7 @@ public class EmpResource {
         List<EmpBean> employess = empService.getAllEmpRecord();
         String json = mapper.writeValueAsString(employess);
         return Response.ok(json).build();
+
     }
     @GET
     @Path("/user/{name}")
