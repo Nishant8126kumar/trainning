@@ -1,6 +1,8 @@
 import org.glassfish.grizzly.http.server.HttpServer
 import org.glassfish.jersey.grizzly2.httpserver.GrizzlyHttpServerFactory
 import org.glassfish.jersey.server.ResourceConfig
+import resource.EmpResource
+
 import java.net.URI
 
 fun main() {
@@ -8,7 +10,7 @@ fun main() {
 }
 
 fun startServer(): HttpServer? {
-    val resourceConfig = ResourceConfig(MyResource::class.java)
+    val resourceConfig = ResourceConfig(EmpResource::class.java)
     return GrizzlyHttpServerFactory.createHttpServer(getBaseUrl(), resourceConfig)
 }
 

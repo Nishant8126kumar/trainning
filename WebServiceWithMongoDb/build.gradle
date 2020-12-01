@@ -22,9 +22,6 @@ dependencies {
     compile group: 'com.sun.jersey', name: 'jersey-json', version: '1.19.3'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 
-
-
-
 }
 compileKotlin {
     kotlinOptions {
@@ -36,3 +33,4 @@ compileTestKotlin {
         jvmTarget = "1.8"
     }
 }
+
