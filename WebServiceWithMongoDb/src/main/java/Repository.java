@@ -6,9 +6,13 @@ import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoCursor;
 import com.mongodb.client.MongoDatabase;
+import com.mongodb.client.model.Projections;
 import org.bson.Document;
+import org.codehaus.jackson.map.ObjectMapper;
 
 
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -24,26 +28,38 @@ public class Repository {
         mongoClient=new MongoClient("localhost",27017);
         mongoDatabase= mongoClient.getDatabase("EmployeeDetails");
     }
-    public List<Document> getRecord()
+    public Response getRecord()throws Exception
     {
         List<Document> list=new ArrayList<>();
+        BasicDBObject dbQuer=new BasicDBObject();
+        dbQuer.put("Name","Rahul Bansal");
         MongoCollection mongoCollection=mongoDatabase.getCollection("Fretron");
-        FindIterable<Document> findIterable=mongoCollection.find();
-        Iterator <Document> iterator=findIterable.iterator();
+        MongoCursor cursor=mongoCollection.find().projection(Projections.excludeId()).iterator();
 
-        while (iterator.hasNext())
+//        String json = new ObjectMapper().writeValueAsString(result);
+//        return Response.ok(json, MediaType.APPLICATION_JSON).build();
+
+
+        while (cursor.hasNext())
         {
-            list.add(iterator.next());
+          list.add((Document) cursor.next());
+            POJO pojo=new POJO();
+            pojo.setAddress(String.valueOf(cursor.next()));
+
+//            list.add(new POJO((DBObject)cursor.next()));
+//            list.add(pojo);
         }
-        return list;
+        String json= new ObjectMapper().writeValueAsString(list);
+       return Response.ok(json, MediaType.APPLICATION_JSON).build();
+//        return json;
     }
-    public List<Document> getDataUser(String name)
+    public Response getDataUser(String name)throws Exception
     {
         List list=new ArrayList<Document>();
         MongoCollection mongoCollection=mongoDatabase.getCollection("Fretron");
         BasicDBObject dbQuer=new BasicDBObject();
         dbQuer.put("Name",String.valueOf(name));
-        FindIterable <Document> findIterable=mongoCollection.find(dbQuer);
+        FindIterable <Document> findIterable=mongoCollection.find(dbQuer).projection(Projections.excludeId());
 
         Iterator<Document> iterator=findIterable.iterator();
         while (iterator.hasNext())
@@ -51,6 +67,8 @@ public class Repository {
             list.add(iterator.next());
 //            System.out.println("Data=:"+iterator.next());
         }
-        return list;
+        String json=new ObjectMapper().writeValueAsString(list);
+        return Response.ok(json,MediaType.APPLICATION_JSON).build();
+
     }
 }

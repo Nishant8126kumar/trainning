@@ -1,8 +1,24 @@
+import com.mongodb.DBObject;
+import org.bson.Document;
 
 public class POJO {
     String name;
     String address;
     String designation;
+
+
+    public POJO(String name, String address, String designation) {
+        this.name = name;
+        this.address = address;
+        this.designation = designation;
+    }
+
+    public POJO(DBObject next) {
+    }
+
+    public POJO() {
+
+    }
 
     public String getAddress() {
         return address;

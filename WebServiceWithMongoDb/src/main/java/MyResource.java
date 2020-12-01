@@ -18,10 +18,11 @@ public class MyResource {
 
     @GET
     @Produces({MediaType.APPLICATION_JSON,MediaType.TEXT_PLAIN})
-    public String get()
+    public Response get()throws  Exception
     {
         System.out.println("Data=:"+repository.getRecord());
-        return repository.getRecord().toString();
+        return repository.getRecord();
+        
     }
 //    @GET
 //    @Path("/print/{name}")
@@ -35,12 +36,12 @@ public class MyResource {
     @GET
     @Path("/user/{name}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.TEXT_PLAIN})
-    public String getRecordByName( @PathParam("name") String name )
+    public Response getRecordByName( @PathParam("name") String name )throws  Exception
     {
         System.out.println("Name=:"+name);
 //        repository.getDataUser(name);
         System.out.println("Data From Repository="+repository.getDataUser(name));
-        return repository.getDataUser(name).toString();
+        return repository.getDataUser(name);
 
     }
 }
