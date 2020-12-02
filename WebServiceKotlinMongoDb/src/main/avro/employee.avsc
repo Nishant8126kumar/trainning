@@ -1,0 +1,22 @@
+{
+"name":"Employee",
+"namespace":"repository",
+"type":"record",
+"fields":
+[
+{
+    "name":"name",
+    "type":"string"
+},
+    {
+        "name":"address",
+        "type":"string",
+        "default":"null"
+    },
+    {
+        "name":"designation",
+        "type":"string"
+    }
+]
+
+}

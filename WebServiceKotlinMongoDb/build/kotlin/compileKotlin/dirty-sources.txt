@@ -1,3 +1,0 @@
-/home/anand/IdeaProjects/WebServiceKotlinMongoDb/src/main/java/Repository.kt
-/home/anand/IdeaProjects/WebServiceKotlinMongoDb/src/main/java/TestMainServer.kt
-/home/anand/IdeaProjects/WebServiceKotlinMongoDb/src/main/java/MyResource.kt
