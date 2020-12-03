@@ -23,7 +23,7 @@ class CjDarclResource {
     {
         println("Welcome ")
 //        println("MyResouce"+);
-        var record:MutableList<CjDarclPojo> = cjDarclService?.getAllEmployeeRecord() as MutableList<CjDarclPojo>
+        var record= cjDarclService?.getAllEmployeeRecord()
         var json=objectMapper?.writeValueAsString(record);
         return Response.ok(json).build()
     }

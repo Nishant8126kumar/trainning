@@ -13,8 +13,6 @@ public class EmpBean {
     public EmpBean(){
 
     }
-
-
     public EmpBean(String name, String address, String designation) {
         this.name = name;
         this.address = address;

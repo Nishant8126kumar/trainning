@@ -35,7 +35,7 @@ public class EmpResource {
 
     }
     @GET
-    @Path("/user/{name}")
+    @Path("/{name}")
     @Produces({MediaType.APPLICATION_JSON,MediaType.TEXT_PLAIN})
     public Response getRecordByName( @PathParam("name") String name )throws  Exception
     {
