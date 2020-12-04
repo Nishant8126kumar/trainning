@@ -7,6 +7,7 @@
  import org.bson.Document
  import org.codehaus.jackson.map.ObjectMapper
  import java.util.*
+ import java.util.logging.Filter
 
  class EmployeeRepository{
      var mongoClient: MongoClient?=null
@@ -70,7 +71,7 @@
      {
          try {
              println("Data Co=:$record")
-             var mongoDatabase=mongoClient?.getDatabase("EmployeeDetails")
+//             var mongoDatabase=mongoClient?.getDatabase("EmployeeDetails")
              var mongoCollection=mongoDatabase?.getCollection("employess")
              var doc=Document.parse(record.toString())
              doc.set("uuid",getUUid().toString())
@@ -78,6 +79,18 @@
              println("details=:"+mongoCursor)
          } catch (e: Exception) {
              println("Exception cooured=:"+e)
+         }
+     }
+     fun deletRecord(uuid:String)
+     {
+         try {
+             println("From Repository=:"+uuid)
+             var basicDBObject=BasicDBObject();
+             basicDBObject.put("uuid",uuid)
+             var mongoCollection=mongoDatabase?.getCollection("employess")
+             var mongoCursor=mongoCollection?.deleteOne(basicDBObject)
+         } catch (e: Exception) {
+             println("Exception=:$e")
          }
      }
      fun getUUid(): UUID {

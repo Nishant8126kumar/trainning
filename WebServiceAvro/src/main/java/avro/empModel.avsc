@@ -15,6 +15,10 @@
      {
          "name":"designation",
          "type":"string"
+     },
+     {
+     "name":"uuid",
+     "type":"string"
      }
      ]
      }

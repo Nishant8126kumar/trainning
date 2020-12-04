@@ -1,7 +1,7 @@
  package services
 
- import repository.Employees
  import repository.EmployeeRepository
+ import repository.Employees
 
  class EmployeeService {
      var employeerepository=EmployeeRepository();
@@ -19,6 +19,11 @@
      {
  //        println("Data Reached=:"+record)
          employeerepository.insertEmployeeRecord(record)
+
+     }
+     fun deletRecordByuuid(uuid:String)
+     {
+         employeerepository.deletRecord(uuid)
 
      }
  }

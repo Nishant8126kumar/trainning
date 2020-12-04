@@ -37,5 +37,13 @@
          fretronService.newEmployeeRecord(empRecord);
          return "ok";
      }
+     @DELETE
+     @Path("/{uuid}")
+     @Consumes(MediaType.APPLICATION_JSON,MediaType.TEXT_PLAIN)
+     fun deleteEmpRecord(@PathParam("uuid")uuid:String):String
+     {
+         fretronService.deletRecordByuuid(uuid)
+         return "Record Deleted"
+     }
 
  }
